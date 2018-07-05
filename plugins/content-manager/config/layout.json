@@ -40,6 +40,9 @@
       },
       "brief": {
         "appearance": "WYSIWYG"
+      },
+      "page": {
+        "appearance": ""
       }
     }
   },
@@ -168,6 +171,29 @@
         "appearance": "WYSIWYG"
       },
       "answers": {
+        "appearance": ""
+      }
+    }
+  },
+  "mileStone": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      },
+      "content": {
+        "appearance": ""
+      }
+    }
+  },
+  "timeline": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      },
+      "year": {
+        "appearance": ""
+      },
+      "content": {
         "appearance": ""
       }
     }

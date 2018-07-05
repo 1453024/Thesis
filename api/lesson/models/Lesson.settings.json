@@ -13,10 +13,6 @@
       "type": "string",
       "required": true
     },
-    "page": {
-      "type": "integer",
-      "required": true
-    },
     "introduction": {
       "type": "text"
     },
@@ -29,7 +25,7 @@
     },
     "exercises": {
       "collection": "exercise",
-      "via": "lession"
+      "via": "lesson"
     },
     "notes": {
       "collection": "note",
@@ -42,6 +38,9 @@
     "questions": {
       "collection": "question",
       "via": "lesson"
+    },
+    "page": {
+      "type": "integer"
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "milestone",
+  "collectionName": "",
   "info": {
     "name": "milestone",
     "description": ""
@@ -12,12 +12,12 @@
     "name": {
       "type": "string"
     },
+    "content": {
+      "type": "text"
+    },
     "timelines": {
       "collection": "timeline",
       "via": "mileStone"
-    },
-    "content": {
-      "type": "text"
     }
   }
 }
