@@ -1,0 +1,23 @@
+{
+  "connection": "default",
+  "collectionName": "milestone",
+  "info": {
+    "name": "milestone",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "timelines": {
+      "collection": "timeline",
+      "via": "mileStone"
+    },
+    "content": {
+      "type": "text"
+    }
+  }
+}

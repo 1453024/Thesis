@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "lesson",
   "info": {
     "name": "lesson",
     "description": ""
@@ -13,6 +13,10 @@
       "type": "string",
       "required": true
     },
+    "page": {
+      "type": "integer",
+      "required": true
+    },
     "introduction": {
       "type": "text"
     },
@@ -23,13 +27,9 @@
       "model": "chapter",
       "via": "lessons"
     },
-    "theoryItems": {
-      "collection": "theoryitem",
-      "via": "lesson"
-    },
     "exercises": {
       "collection": "exercise",
-      "via": "lesson"
+      "via": "lession"
     },
     "notes": {
       "collection": "note",
@@ -37,10 +37,6 @@
     },
     "mindMaps": {
       "collection": "mindmap",
-      "via": "lesson"
-    },
-    "bookMarks": {
-      "collection": "bookmark",
       "via": "lesson"
     },
     "questions": {
