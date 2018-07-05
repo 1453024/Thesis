@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "mindmap",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "user": {
+      "model": "user",
+      "via": "mindMap",
+      "plugin": "users-permissions"
+    },
+    "lesson": {
+      "model": "lesson",
+      "via": "mindMaps"
+    }
+  }
+}

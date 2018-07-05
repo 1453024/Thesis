@@ -1,0 +1,35 @@
+{
+  "connection": "default",
+  "collectionName": "userconfirmation",
+  "info": {
+    "name": "userconfirmation",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "content": {
+      "type": "string"
+    },
+    "user": {
+      "model": "user",
+      "via": "userConfirmation",
+      "plugin": "users-permissions"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "accepted",
+        "rejected"
+      ],
+      "required": true
+    },
+    "confirmBy": {
+      "model": "user",
+      "via": "userConfirms",
+      "plugin": "users-permissions"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "bookmark",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "position": {
+      "type": "string",
+      "required": true
+    },
+    "user": {
+      "model": "user",
+      "via": "bookmark",
+      "plugin": "users-permissions"
+    },
+    "lesson": {
+      "model": "lesson",
+      "via": "bookMarks"
+    }
+  }
+}

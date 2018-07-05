@@ -1,0 +1,44 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/theoryitem",
+      "handler": "Theoryitem.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/theoryitem/:_id",
+      "handler": "Theoryitem.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/theoryitem",
+      "handler": "Theoryitem.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/theoryitem/:_id",
+      "handler": "Theoryitem.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/theoryitem/:_id",
+      "handler": "Theoryitem.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

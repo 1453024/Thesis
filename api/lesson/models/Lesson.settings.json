@@ -1,0 +1,51 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "lesson",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "introduction": {
+      "type": "text"
+    },
+    "brief": {
+      "type": "text"
+    },
+    "chapter": {
+      "model": "chapter",
+      "via": "lessons"
+    },
+    "theoryItems": {
+      "collection": "theoryitem",
+      "via": "lesson"
+    },
+    "exercises": {
+      "collection": "exercise",
+      "via": "lesson"
+    },
+    "notes": {
+      "collection": "note",
+      "via": "lesson"
+    },
+    "mindMaps": {
+      "collection": "mindmap",
+      "via": "lesson"
+    },
+    "bookMarks": {
+      "collection": "bookmark",
+      "via": "lesson"
+    },
+    "questions": {
+      "collection": "question",
+      "via": "lesson"
+    }
+  }
+}

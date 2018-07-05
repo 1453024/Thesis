@@ -1,0 +1,25 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "note",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "Content": {
+      "type": "text"
+    },
+    "lesson": {
+      "model": "lesson",
+      "via": "notes"
+    },
+    "user": {
+      "model": "user",
+      "via": "note",
+      "plugin": "users-permissions"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/userconfirmation",
+      "handler": "Userconfirmation.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/userconfirmation/:_id",
+      "handler": "Userconfirmation.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/userconfirmation",
+      "handler": "Userconfirmation.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/userconfirmation/:_id",
+      "handler": "Userconfirmation.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/userconfirmation/:_id",
+      "handler": "Userconfirmation.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

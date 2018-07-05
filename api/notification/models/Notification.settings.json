@@ -1,0 +1,32 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "notification",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "userQuery": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "read",
+        "unread",
+        "new"
+      ],
+      "required": true
+    }
+  }
+}

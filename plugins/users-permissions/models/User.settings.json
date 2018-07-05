@@ -1,0 +1,104 @@
+{
+  "connection": "default",
+  "info": {
+    "name": "user",
+    "description": ""
+  },
+  "attributes": {
+    "username": {
+      "type": "string",
+      "minLength": 3,
+      "unique": true,
+      "configurable": false,
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "minLength": 6,
+      "configurable": false,
+      "required": true
+    },
+    "provider": {
+      "type": "string",
+      "configurable": false
+    },
+    "password": {
+      "type": "password",
+      "minLength": 6,
+      "configurable": false,
+      "private": true
+    },
+    "resetPasswordToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true
+    },
+    "role": {
+      "model": "role",
+      "via": "users",
+      "plugin": "users-permissions",
+      "configurable": false
+    },
+    "address": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "school": {
+      "model": "school",
+      "via": "users"
+    },
+    "grade": {
+      "model": "grade",
+      "via": "users"
+    },
+    "avatar": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "teacher",
+        "student"
+      ],
+      "required": true
+    },
+    "note": {
+      "model": "note",
+      "via": "user"
+    },
+    "mindMap": {
+      "model": "mindmap",
+      "via": "user"
+    },
+    "bookmark": {
+      "model": "bookmark",
+      "via": "user"
+    },
+    "questions": {
+      "collection": "question",
+      "via": "user"
+    },
+    "answers": {
+      "collection": "answer",
+      "via": "user"
+    },
+    "answer": {
+      "model": "answer",
+      "via": "userChecked"
+    },
+    "userConfirmation": {
+      "model": "userconfirmation",
+      "via": "user"
+    },
+    "userConfirms": {
+      "collection": "userconfirmation",
+      "via": "confirmBy"
+    }
+  },
+  "collectionName": "users-permissions_user"
+}

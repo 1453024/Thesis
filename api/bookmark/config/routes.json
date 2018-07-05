@@ -1,0 +1,44 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/bookmark",
+      "handler": "Bookmark.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/bookmark/:_id",
+      "handler": "Bookmark.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/bookmark",
+      "handler": "Bookmark.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/bookmark/:_id",
+      "handler": "Bookmark.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/bookmark/:_id",
+      "handler": "Bookmark.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

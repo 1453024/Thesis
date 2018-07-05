@@ -1,0 +1,24 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "theoryitem",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "text"
+    },
+    "lesson": {
+      "model": "lesson",
+      "via": "theoryItems"
+    }
+  }
+}
