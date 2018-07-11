@@ -44,23 +44,23 @@ class ChapterExercisePage extends Component {
   }
 
   fetchSubjects = () => {
-    fetch(apis.LIST_SUBJECTS).then(
-      async res => {
-        const data = await res.json()
-        const parsedData = data.map(item => ({
-          value: item.id,
-          label: item.Name
-        }))
+    fetch(apis.LIST_SUBJECTS).then(async res => {
+      const data = await res.json()
+      const parsedData = data.map(item => ({
+        value: item.id,
+        label: item.Name
+      }))
 
-        this.setState({
+      this.setState(
+        {
           subjects: parsedData,
           subject: data[0].id
-        })
-      },
-      () => {
-        this.fetchGrades(data[0].id)
-      }
-    )
+        },
+        () => {
+          this.fetchGrades(data[0].id)
+        }
+      )
+    })
   }
 
   fetchGrades = id => {
@@ -179,7 +179,9 @@ class ChapterExercisePage extends Component {
       },
       body: JSON.stringify(result)
     }).then(res => {
-      console.log("res", res)
+      console.info("Added Succesfully!")
+      window.location.href =
+        "/admin/plugins/content-manager/exercise?source=content-manager"
     })
   }
 
@@ -259,7 +261,7 @@ class ChapterExercisePage extends Component {
                           name="chapter"
                           options={chapters}
                           onChange={this._handleChangeChapter}
-                          value={part}
+                          value={chapter}
                         />
                       )}
                     </div>

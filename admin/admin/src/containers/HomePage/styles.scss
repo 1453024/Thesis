@@ -27,6 +27,13 @@
   }
 }
 
+.welcomeImage {
+  background: url("../../assets/images/WelcometoCMS.png") no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  padding-top: 47%;
+}
+
 .blockLinkDocumentation {
   &:before {
     content: '\f02d';

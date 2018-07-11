@@ -9,9 +9,6 @@
     "timestamps": true
   },
   "attributes": {
-    "content": {
-      "type": "string"
-    },
     "user": {
       "model": "user",
       "via": "userConfirmation",
@@ -30,6 +27,9 @@
       "model": "user",
       "via": "userConfirms",
       "plugin": "users-permissions"
+    },
+    "content": {
+      "type": "text"
     }
   }
 }

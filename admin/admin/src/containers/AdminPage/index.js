@@ -79,7 +79,6 @@ export class AdminPage extends React.Component {
     this.checkLogin(this.props)
     this.props.getGaStatus()
     this.props.getLayout()
-    ReactGA.initialize("UA-54313258-9")
   }
 
   componentWillReceiveProps(nextProps) {
@@ -221,6 +220,7 @@ export class AdminPage extends React.Component {
             plugins={this.retrievePlugins()}
             layout={adminPage.layout}
             version={adminPage.strapiVersion}
+            auth={auth}
           />
         )}
         <CTAWrapper>

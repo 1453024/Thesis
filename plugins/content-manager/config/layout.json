@@ -135,7 +135,7 @@
   "userconfirmation": {
     "attributes": {
       "content": {
-        "appearance": ""
+        "appearance": "WYSIWYG"
       }
     }
   },
