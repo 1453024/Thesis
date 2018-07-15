@@ -6,5 +6,7 @@ export default {
   LIST_PARTS: BASE_URL + "/part",
   LIST_CHAPTERS: BASE_URL + "/chapter",
   LIST_LESSONS: BASE_URL + "/lesson",
-  CREATE_EXERCISE: BASE_URL + "/exercise"
+  CREATE_EXERCISE: BASE_URL + "/exercise",
+  LIST_TYPES: BASE_URL + "/users-permissions/roles",
+  REGISTER: BASE_URL + "/auth/local/register"
 }
