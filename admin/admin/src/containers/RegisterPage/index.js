@@ -74,22 +74,22 @@ class RegisterPage extends Component {
     })
   }
 
-  _handleUploadPhoto = e => {
-    if (e.target.files && e.target.files[0]) {
-      const reader = new FileReader()
-      const { files } = e.target
+  // _handleUploadPhoto = e => {
+  //   if (e.target.files && e.target.files[0]) {
+  //     const reader = new FileReader()
+  //     const { files } = e.target
 
-      reader.onload = e => {
-        const { result } = e.target
+  //     reader.onload = e => {
+  //       const { result } = e.target
 
-        this.setState({
-          avatar: result
-        })
-      }
+  //       this.setState({
+  //         avatar: result
+  //       })
+  //     }
 
-      reader.readAsDataURL(files[0])
-    }
-  }
+  //     reader.readAsDataURL(files[0])
+  //   }
+  // }
 
   _handleChangeEmail = e => {
     this.setState({
@@ -101,10 +101,6 @@ class RegisterPage extends Component {
     e.preventDefault()
 
     const { name, password, address, type, roles, avatar, email } = this.state
-    const role =
-      type === "student"
-        ? roles.find(item => item.name === "Authenticated").id
-        : roles.find(item => item.name === "Administrator").id
 
     fetch(api.REGISTER, {
       method: "POST",
@@ -126,6 +122,10 @@ class RegisterPage extends Component {
         console.log(res)
 
         this.resetState()
+
+        setTimeout(() => {
+          window.location.href = "/admin/plugins/users-permissions/auth/login"
+        }, 1500)
       })
       .catch(err => {
         console.error(err)
@@ -202,7 +202,7 @@ class RegisterPage extends Component {
                   <option value="teacher">Teacher</option>
                 </select>
               </div>
-              <div className="form-group col-md-6">
+              {/* <div className="form-group col-md-6">
                 <label htmlFor="avatar">Avatar</label>
                 <input
                   type="file"
@@ -210,7 +210,7 @@ class RegisterPage extends Component {
                   id="avatar"
                   onChange={this._handleUploadPhoto}
                 />
-              </div>
+              </div> */}
             </div>
 
             <div className={`text-center ${styles.btnWrapper}`}>

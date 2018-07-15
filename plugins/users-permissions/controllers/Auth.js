@@ -77,8 +77,8 @@ module.exports = {
       }
 
       if (
-        user.role.type !== "root" &&
-        user.role.type !== "authenticated" &&
+        ((user.role.type !== "root" && user.role.type !== "authenticated") ||
+          user.type === "student") &&
         ctx.request.admin
       ) {
         return ctx.badRequest(

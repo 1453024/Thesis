@@ -4,19 +4,19 @@
  *
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react"
+import PropTypes from "prop-types"
 
-import styles from './styles.scss';
+import styles from "./styles.scss"
 
 class TableHeader extends React.Component {
   handleChangeSort(name) {
     if (this.props.sort === name) {
-      this.props.onChangeSort(`-${name}`);
+      this.props.onChangeSort(`-${name}`)
     } else if (this.props.sort === `-${name}`) {
-      this.props.onChangeSort(this.props.primaryKey);
+      this.props.onChangeSort(this.props.primaryKey)
     } else {
-      this.props.onChangeSort(name);
+      this.props.onChangeSort(name)
     }
   }
 
@@ -24,12 +24,12 @@ class TableHeader extends React.Component {
     // Generate headers list
     const headers = this.props.headers.map((header, i) => {
       // Define sort icon
-      let icon;
+      let icon
 
       if (this.props.sort === header.name) {
-        icon = <i className={`fa fa-sort-asc ${styles.iconAsc}`} />;
+        icon = <i className={`fa fa-sort-asc ${styles.iconAsc}`} />
       } else if (this.props.sort === `-${header.name}`) {
-        icon = <i className={`fa fa-sort-asc ${styles.iconDesc}`} />;
+        icon = <i className={`fa fa-sort-asc ${styles.iconDesc}`} />
       }
 
       return (
@@ -41,21 +41,18 @@ class TableHeader extends React.Component {
             {header.label}
             {icon}
           </span>
-
         </th>
-      );
-    });
+      )
+    })
 
     // Add empty th for actions column.
-    headers.push(<th key="th_action"></th>);
+    headers.push(<th key="th_action" />)
 
     return (
       <thead className={styles.tableHeader}>
-        <tr >
-          {headers}
-        </tr>
+        <tr>{headers}</tr>
       </thead>
-    );
+    )
   }
 }
 
@@ -63,7 +60,7 @@ TableHeader.propTypes = {
   headers: PropTypes.array.isRequired,
   onChangeSort: PropTypes.func.isRequired,
   primaryKey: PropTypes.string.isRequired,
-  sort: PropTypes.string.isRequired,
-};
+  sort: PropTypes.string.isRequired
+}
 
-export default TableHeader;
+export default TableHeader
