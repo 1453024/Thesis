@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "timeline",
   "info": {
     "name": "timeline",
     "description": ""
@@ -21,6 +21,11 @@
     "mileStone": {
       "model": "milestone",
       "via": "timelines"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
     }
   }
 }

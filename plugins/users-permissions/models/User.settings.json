@@ -79,14 +79,6 @@
       "model": "answer",
       "via": "userChecked"
     },
-    "userConfirmation": {
-      "model": "userconfirmation",
-      "via": "user"
-    },
-    "userConfirms": {
-      "collection": "userconfirmation",
-      "via": "confirmBy"
-    },
     "notes": {
       "type": "text"
     },
