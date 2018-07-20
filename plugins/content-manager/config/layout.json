@@ -98,6 +98,12 @@
     "attributes": {
       "Content": {
         "appearance": ""
+      },
+      "name": {
+        "appearance": ""
+      },
+      "content": {
+        "appearance": ""
       }
     }
   },
@@ -194,6 +200,23 @@
         "appearance": ""
       },
       "content": {
+        "appearance": ""
+      }
+    }
+  },
+  "mindMap": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      },
+      "content": {
+        "appearance": ""
+      }
+    }
+  },
+  "score": {
+    "attributes": {
+      "point": {
         "appearance": ""
       }
     }

@@ -80,10 +80,16 @@
       "via": "userChecked"
     },
     "notes": {
-      "type": "text"
+      "collection": "note",
+      "via": "user"
     },
     "mindMaps": {
-      "type": "text"
+      "collection": "mindmap",
+      "via": "user"
+    },
+    "scores": {
+      "collection": "score",
+      "via": "user"
     }
   },
   "collectionName": "users-permissions_user"

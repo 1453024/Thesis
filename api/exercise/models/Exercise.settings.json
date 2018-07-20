@@ -33,6 +33,10 @@
     },
     "title": {
       "type": "string"
+    },
+    "scores": {
+      "collection": "score",
+      "via": "exercise"
     }
   }
 }
