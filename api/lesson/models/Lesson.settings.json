@@ -27,14 +27,6 @@
       "collection": "exercise",
       "via": "lesson"
     },
-    "notes": {
-      "collection": "note",
-      "via": "lesson"
-    },
-    "mindMaps": {
-      "collection": "mindmap",
-      "via": "lesson"
-    },
     "questions": {
       "collection": "question",
       "via": "lesson"

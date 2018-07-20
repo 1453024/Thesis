@@ -1,4 +1,4 @@
-'use strict';
+"use strict"
 
 /**
  * User.js service
@@ -7,8 +7,8 @@
  */
 
 // Public dependencies.
-const _ = require('lodash');
-const bcrypt = require('bcryptjs');
+const _ = require("lodash")
+const bcrypt = require("bcryptjs")
 
 module.exports = {
   /**
@@ -17,19 +17,27 @@ module.exports = {
    * @return {Promise}
    */
 
-  add: async (values) => {
+  add: async values => {
     if (values.password) {
-      values.password = await strapi.plugins['users-permissions'].services.user.hashPassword(values);
+      values.password = await strapi.plugins[
+        "users-permissions"
+      ].services.user.hashPassword(values)
     }
 
     // Use Content Manager business logic to handle relation.
-    if (strapi.plugins['content-manager']) {
-      return await strapi.plugins['content-manager'].services['contentmanager'].add({
-        model: 'user'
-      }, values, 'users-permissions');
+    if (strapi.plugins["content-manager"]) {
+      return await strapi.plugins["content-manager"].services[
+        "contentmanager"
+      ].add(
+        {
+          model: "user"
+        },
+        values,
+        "users-permissions"
+      )
     }
 
-    return strapi.query('user', 'users-permissions').create(values);
+    return strapi.query("user", "users-permissions").create(values)
   },
 
   /**
@@ -43,18 +51,24 @@ module.exports = {
     // To get the updated object, you have to execute the `findOne()` method
     // or use the `findOneOrUpdate()` method with `{ new:true }` option.
     if (values.password) {
-      values.password = await strapi.plugins['users-permissions'].services.user.hashPassword(values);
+      values.password = await strapi.plugins[
+        "users-permissions"
+      ].services.user.hashPassword(values)
     }
 
     // Use Content Manager business logic to handle relation.
-    if (strapi.plugins['content-manager']) {
-      params.model = 'user';
-      params.id = (params._id || params.id);
+    if (strapi.plugins["content-manager"]) {
+      params.model = "user"
+      params.id = params._id || params.id
 
-      return await strapi.plugins['content-manager'].services['contentmanager'].edit(params, values, 'users-permissions');
+      return await strapi.plugins["content-manager"].services[
+        "contentmanager"
+      ].edit(params, values, "users-permissions")
     }
 
-    return strapi.query('user', 'users-permissions').update(_.assign(params, values));
+    return strapi
+      .query("user", "users-permissions")
+      .update(_.assign(params, values))
   },
 
   /**
@@ -63,8 +77,10 @@ module.exports = {
    * @return {Promise}
    */
 
-  fetch: (params) => {
-    return strapi.query('user', 'users-permissions').findOne(_.pick(params, ['_id', 'id']));
+  fetch: params => {
+    return strapi
+      .query("user", "users-permissions")
+      .findOne(_.pick(params, ["_id", "id"]))
   },
 
   /**
@@ -73,28 +89,30 @@ module.exports = {
    * @return {Promise}
    */
 
-  fetchAll: (params) => {
-    return strapi.query('user', 'users-permissions').find(strapi.utils.models.convertParams('user', params));
+  fetchAll: params => {
+    return strapi
+      .query("user", "users-permissions")
+      .find(strapi.utils.models.convertParams("user", params))
   },
 
-  hashPassword: function (user = {}) {
-    return new Promise((resolve) => {
+  hashPassword: function(user = {}) {
+    return new Promise(resolve => {
       if (!user.password || this.isHashed(user.password)) {
-        resolve(null);
+        resolve(null)
       } else {
         bcrypt.hash(user.password, 10, (err, hash) => {
-          resolve(hash);
-        });
+          resolve(hash)
+        })
       }
-    });
+    })
   },
 
-  isHashed: (password) => {
-    if (typeof password !== 'string' || !password) {
-      return false;
+  isHashed: password => {
+    if (typeof password !== "string" || !password) {
+      return false
     }
 
-    return password.split('$').length === 4;
+    return password.split("$").length === 4
   },
 
   /**
@@ -105,17 +123,20 @@ module.exports = {
 
   remove: async params => {
     // Use Content Manager business logic to handle relation.
-    if (strapi.plugins['content-manager']) {
-      params.model = 'user';
-      params.id = (params._id || params.id);
+    if (strapi.plugins["content-manager"]) {
+      params.model = "user"
+      params.id = params._id || params.id
 
-      await strapi.plugins['content-manager'].services['contentmanager'].delete(params, {source: 'users-permissions'});
+      await strapi.plugins["content-manager"].services["contentmanager"].delete(
+        params,
+        { source: "users-permissions" }
+      )
     }
 
-    return strapi.query('user', 'users-permissions').delete(params);
+    return strapi.query("user", "users-permissions").delete(params)
   },
 
   validatePassword: (password, hash) => {
-    return bcrypt.compareSync(password, hash);
+    return bcrypt.compareSync(password, hash)
   }
-};
+}

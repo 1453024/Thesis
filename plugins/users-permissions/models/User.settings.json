@@ -67,14 +67,6 @@
       ],
       "required": true
     },
-    "note": {
-      "model": "note",
-      "via": "user"
-    },
-    "mindMap": {
-      "model": "mindmap",
-      "via": "user"
-    },
     "questions": {
       "collection": "question",
       "via": "user"
@@ -94,6 +86,12 @@
     "userConfirms": {
       "collection": "userconfirmation",
       "via": "confirmBy"
+    },
+    "notes": {
+      "type": "text"
+    },
+    "mindMaps": {
+      "type": "text"
     }
   },
   "collectionName": "users-permissions_user"

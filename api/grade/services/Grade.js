@@ -55,7 +55,15 @@ module.exports = {
           model: "Chapter",
           populate: {
             path: "lessons",
-            model: "Lesson"
+            model: "Lesson",
+            populate: {
+              path: "questions",
+              model: "Question"
+            },
+            populate: {
+              path: "exercises",
+              model: "Exercise"
+            }
           }
         }
       })

@@ -58,6 +58,12 @@ module.exports = {
               path: "subject"
             }
           }
+        },
+        populate: {
+          path: "questions"
+        },
+        populate: {
+          path: "exercises"
         }
       })
   },
