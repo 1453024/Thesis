@@ -220,5 +220,15 @@
         "appearance": ""
       }
     }
+  },
+  "reference": {
+    "attributes": {
+      "video": {
+        "appearance": ""
+      },
+      "keyword": {
+        "appearance": ""
+      }
+    }
   }
 }

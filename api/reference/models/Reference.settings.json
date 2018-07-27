@@ -1,0 +1,23 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "reference",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "video": {
+      "type": "string"
+    },
+    "keyword": {
+      "type": "string"
+    },
+    "lesson": {
+      "model": "lesson",
+      "via": "references"
+    }
+  }
+}

@@ -33,6 +33,10 @@
     },
     "page": {
       "type": "integer"
+    },
+    "references": {
+      "collection": "reference",
+      "via": "lesson"
     }
   }
 }
