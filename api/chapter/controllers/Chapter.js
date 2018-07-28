@@ -60,5 +60,15 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.chapter.remove(ctx.params);
+  },
+
+  /**
+    * Count chapter records.
+    *
+    * @return {Number}
+    */
+
+  count: async (ctx) => {
+    return strapi.services.chapter.count(ctx.query);
   }
 };

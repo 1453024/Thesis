@@ -1,5 +1,5 @@
 {
-  "name": "myProject",
+  "name": "Thesis",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application.",
@@ -20,23 +20,25 @@
   },
   "dependencies": {
     "lodash": "4.x.x",
-    "strapi": "3.0.0-alpha.12.2",
-    "strapi-mongoose": "3.0.0-alpha.12.2"
+    "pluralize": "^7.0.0",
+    "strapi": "3.0.0-alpha.12.7.1",
+    "strapi-hook-mongoose": "3.0.0-alpha.12.7.1"
   },
   "author": {
-    "name": "caoly",
+    "name": "Admin",
     "email": "",
     "url": ""
   },
   "maintainers": [
     {
-      "name": "caoly",
+      "name": "Admin",
       "email": "",
       "url": ""
     }
   ],
   "strapi": {
-    "uuid": "bd6356e9-6bb1-4dda-b877-8ab9250fccee"
+    "packageManager": "npm",
+    "uuid": "7ec9e694-794a-49bb-900b-a2297cb3d934"
   },
   "engines": {
     "node": ">= 9.0.0",

@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/part/count",
+      "handler": "Part.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/part/:_id",
       "handler": "Part.findOne",
       "config": {

@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/milestone/count",
+      "handler": "Milestone.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/milestone/:_id",
       "handler": "Milestone.findOne",
       "config": {

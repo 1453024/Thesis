@@ -1,4 +1,4 @@
-'use strict';
+"use strict"
 
 /**
  * School.js service
@@ -7,32 +7,30 @@
  */
 
 // Public dependencies.
-const _ = require('lodash');
+const _ = require("lodash")
 
 module.exports = {
-
   /**
    * Promise to fetch all schools.
    *
    * @return {Promise}
    */
 
-  fetchAll: (params) => {
+  fetchAll: params => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('school', params);
+    const filters = strapi.utils.models.convertParams("school", params)
     // Select field to populate.
     const populate = School.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
-      .join(' ');
+      .join(" ")
 
-    return School
-      .find()
+    return School.find()
       .where(filters.where)
       .sort(filters.sort)
       .skip(filters.start)
       .limit(filters.limit)
-      .populate(populate);
+      .populate(populate)
   },
 
   /**
@@ -41,16 +39,16 @@ module.exports = {
    * @return {Promise}
    */
 
-  fetch: (params) => {
+  fetch: params => {
     // Select field to populate.
     const populate = School.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
-      .join(' ');
+      .join(" ")
 
-    return School
-      .findOne(_.pick(params, _.keys(School.schema.paths)))
-      .populate(populate);
+    return School.findOne(_.pick(params, _.keys(School.schema.paths))).populate(
+      populate
+    )
   },
 
   /**
@@ -59,16 +57,16 @@ module.exports = {
    * @return {Promise}
    */
 
-  add: async (values) => {
+  add: async values => {
     // Extract values related to relational data.
-    const relations = _.pick(values, School.associations.map(ast => ast.alias));
-    const data = _.omit(values, School.associations.map(ast => ast.alias));
+    const relations = _.pick(values, School.associations.map(ast => ast.alias))
+    const data = _.omit(values, School.associations.map(ast => ast.alias))
 
     // Create entry with no-relational data.
-    const entry = await School.create(data);
+    const entry = await School.create(data)
 
     // Create relational data and return the entry.
-    return School.updateRelations({ id: entry.id, values: relations });
+    return School.updateRelations({ id: entry.id, values: relations })
   },
 
   /**
@@ -79,14 +77,14 @@ module.exports = {
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, School.associations.map(a => a.alias));
-    const data = _.omit(values, School.associations.map(a => a.alias));
+    const relations = _.pick(values, School.associations.map(a => a.alias))
+    const data = _.omit(values, School.associations.map(a => a.alias))
 
     // Update entry with no-relational data.
-    const entry = await School.update(params, data, { multi: true });
+    const entry = await School.update(params, data, { multi: true })
 
     // Update relational data and return the entry.
-    return School.updateRelations(Object.assign(params, { values: relations }));
+    return School.updateRelations(Object.assign(params, { values: relations }))
   },
 
   /**
@@ -100,32 +98,53 @@ module.exports = {
     const populate = School.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
-      .join(' ');
+      .join(" ")
 
     // Note: To get the full response of Mongo, use the `remove()` method
     // or add spent the parameter `{ passRawResult: true }` as second argument.
-    const data = await School
-      .findOneAndRemove(params, {})
-      .populate(populate);
+    const data = await School.findOneAndRemove(params, {}).populate(populate)
 
     if (!data) {
-      return data;
+      return data
     }
 
     await Promise.all(
       School.associations.map(async association => {
-        const search = _.endsWith(association.nature, 'One') || association.nature === 'oneToMany' ? { [association.via]: data._id } : { [association.via]: { $in: [data._id] } };
-        const update = _.endsWith(association.nature, 'One') || association.nature === 'oneToMany' ? { [association.via]: null } : { $pull: { [association.via]: data._id } };
+        const search =
+          _.endsWith(association.nature, "One") ||
+          association.nature === "oneToMany"
+            ? { [association.via]: data._id }
+            : { [association.via]: { $in: [data._id] } }
+        const update =
+          _.endsWith(association.nature, "One") ||
+          association.nature === "oneToMany"
+            ? { [association.via]: null }
+            : { $pull: { [association.via]: data._id } }
 
         // Retrieve model.
-        const model = association.plugin ?
-          strapi.plugins[association.plugin].models[association.model || association.collection] :
-          strapi.models[association.model || association.collection];
+        const model = association.plugin
+          ? strapi.plugins[association.plugin].models[
+              association.model || association.collection
+            ]
+          : strapi.models[association.model || association.collection]
 
-        return model.update(search, update, { multi: true });
+        return model.update(search, update, { multi: true })
       })
-    );
+    )
 
-    return data;
+    return data
+  },
+
+  /**
+   * Promise to count schools.
+   *
+   * @return {Promise}
+   */
+
+  count: params => {
+    // Convert `params` object to filters compatible with Mongo.
+    const filters = strapi.utils.models.convertParams("school", params)
+
+    return School.count().where(filters.where)
   }
-};
+}

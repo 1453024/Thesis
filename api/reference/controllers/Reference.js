@@ -1,4 +1,4 @@
-'use strict';
+"use strict"
 
 /**
  * Reference.js controller
@@ -7,15 +7,14 @@
  */
 
 module.exports = {
-
   /**
    * Retrieve reference records.
    *
    * @return {Object|Array}
    */
 
-  find: async (ctx) => {
-    return strapi.services.reference.fetchAll(ctx.query);
+  find: async ctx => {
+    return strapi.services.reference.fetchAll(ctx.query)
   },
 
   /**
@@ -24,12 +23,12 @@ module.exports = {
    * @return {Object}
    */
 
-  findOne: async (ctx) => {
+  findOne: async ctx => {
     if (!ctx.params._id.match(/^[0-9a-fA-F]{24}$/)) {
-      return ctx.notFound();
+      return ctx.notFound()
     }
 
-    return strapi.services.reference.fetch(ctx.params);
+    return strapi.services.reference.fetch(ctx.params)
   },
 
   /**
@@ -38,8 +37,8 @@ module.exports = {
    * @return {Object}
    */
 
-  create: async (ctx) => {
-    return strapi.services.reference.add(ctx.request.body);
+  create: async ctx => {
+    return strapi.services.reference.add(ctx.request.body)
   },
 
   /**
@@ -49,7 +48,7 @@ module.exports = {
    */
 
   update: async (ctx, next) => {
-    return strapi.services.reference.edit(ctx.params, ctx.request.body) ;
+    return strapi.services.reference.edit(ctx.params, ctx.request.body)
   },
 
   /**
@@ -59,6 +58,16 @@ module.exports = {
    */
 
   destroy: async (ctx, next) => {
-    return strapi.services.reference.remove(ctx.params);
+    return strapi.services.reference.remove(ctx.params)
+  },
+
+  /**
+   * Count reference records.
+   *
+   * @return {Number}
+   */
+
+  count: async ctx => {
+    return strapi.services.reference.count(ctx.query)
   }
-};
+}

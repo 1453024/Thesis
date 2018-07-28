@@ -1,4 +1,4 @@
-'use strict';
+"use strict"
 
 /**
  * Question.js controller
@@ -7,15 +7,14 @@
  */
 
 module.exports = {
-
   /**
    * Retrieve question records.
    *
    * @return {Object|Array}
    */
 
-  find: async (ctx) => {
-    return strapi.services.question.fetchAll(ctx.query);
+  find: async ctx => {
+    return strapi.services.question.fetchAll(ctx.query)
   },
 
   /**
@@ -24,12 +23,12 @@ module.exports = {
    * @return {Object}
    */
 
-  findOne: async (ctx) => {
+  findOne: async ctx => {
     if (!ctx.params._id.match(/^[0-9a-fA-F]{24}$/)) {
-      return ctx.notFound();
+      return ctx.notFound()
     }
 
-    return strapi.services.question.fetch(ctx.params);
+    return strapi.services.question.fetch(ctx.params)
   },
 
   /**
@@ -38,8 +37,8 @@ module.exports = {
    * @return {Object}
    */
 
-  create: async (ctx) => {
-    return strapi.services.question.add(ctx.request.body);
+  create: async ctx => {
+    return strapi.services.question.add(ctx.request.body)
   },
 
   /**
@@ -49,7 +48,7 @@ module.exports = {
    */
 
   update: async (ctx, next) => {
-    return strapi.services.question.edit(ctx.params, ctx.request.body) ;
+    return strapi.services.question.edit(ctx.params, ctx.request.body)
   },
 
   /**
@@ -59,6 +58,16 @@ module.exports = {
    */
 
   destroy: async (ctx, next) => {
-    return strapi.services.question.remove(ctx.params);
+    return strapi.services.question.remove(ctx.params)
+  },
+
+  /**
+   * Count question records.
+   *
+   * @return {Number}
+   */
+
+  count: async ctx => {
+    return strapi.services.question.count(ctx.query)
   }
-};
+}

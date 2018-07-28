@@ -1,4 +1,4 @@
-'use strict';
+"use strict"
 
 /**
  * Score.js service
@@ -7,32 +7,30 @@
  */
 
 // Public dependencies.
-const _ = require('lodash');
+const _ = require("lodash")
 
 module.exports = {
-
   /**
    * Promise to fetch all scores.
    *
    * @return {Promise}
    */
 
-  fetchAll: (params) => {
+  fetchAll: params => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('score', params);
+    const filters = strapi.utils.models.convertParams("score", params)
     // Select field to populate.
     const populate = Score.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
-      .join(' ');
+      .join(" ")
 
-    return Score
-      .find()
+    return Score.find()
       .where(filters.where)
       .sort(filters.sort)
       .skip(filters.start)
       .limit(filters.limit)
-      .populate(populate);
+      .populate(populate)
   },
 
   /**
@@ -41,16 +39,16 @@ module.exports = {
    * @return {Promise}
    */
 
-  fetch: (params) => {
+  fetch: params => {
     // Select field to populate.
     const populate = Score.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
-      .join(' ');
+      .join(" ")
 
-    return Score
-      .findOne(_.pick(params, _.keys(Score.schema.paths)))
-      .populate(populate);
+    return Score.findOne(_.pick(params, _.keys(Score.schema.paths))).populate(
+      populate
+    )
   },
 
   /**
@@ -59,16 +57,16 @@ module.exports = {
    * @return {Promise}
    */
 
-  add: async (values) => {
+  add: async values => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Score.associations.map(ast => ast.alias));
-    const data = _.omit(values, Score.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Score.associations.map(ast => ast.alias))
+    const data = _.omit(values, Score.associations.map(ast => ast.alias))
 
     // Create entry with no-relational data.
-    const entry = await Score.create(data);
+    const entry = await Score.create(data)
 
     // Create relational data and return the entry.
-    return Score.updateRelations({ id: entry.id, values: relations });
+    return Score.updateRelations({ id: entry.id, values: relations })
   },
 
   /**
@@ -79,14 +77,14 @@ module.exports = {
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Score.associations.map(a => a.alias));
-    const data = _.omit(values, Score.associations.map(a => a.alias));
+    const relations = _.pick(values, Score.associations.map(a => a.alias))
+    const data = _.omit(values, Score.associations.map(a => a.alias))
 
     // Update entry with no-relational data.
-    const entry = await Score.update(params, data, { multi: true });
+    const entry = await Score.update(params, data, { multi: true })
 
     // Update relational data and return the entry.
-    return Score.updateRelations(Object.assign(params, { values: relations }));
+    return Score.updateRelations(Object.assign(params, { values: relations }))
   },
 
   /**
@@ -100,32 +98,53 @@ module.exports = {
     const populate = Score.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
-      .join(' ');
+      .join(" ")
 
     // Note: To get the full response of Mongo, use the `remove()` method
     // or add spent the parameter `{ passRawResult: true }` as second argument.
-    const data = await Score
-      .findOneAndRemove(params, {})
-      .populate(populate);
+    const data = await Score.findOneAndRemove(params, {}).populate(populate)
 
     if (!data) {
-      return data;
+      return data
     }
 
     await Promise.all(
       Score.associations.map(async association => {
-        const search = _.endsWith(association.nature, 'One') || association.nature === 'oneToMany' ? { [association.via]: data._id } : { [association.via]: { $in: [data._id] } };
-        const update = _.endsWith(association.nature, 'One') || association.nature === 'oneToMany' ? { [association.via]: null } : { $pull: { [association.via]: data._id } };
+        const search =
+          _.endsWith(association.nature, "One") ||
+          association.nature === "oneToMany"
+            ? { [association.via]: data._id }
+            : { [association.via]: { $in: [data._id] } }
+        const update =
+          _.endsWith(association.nature, "One") ||
+          association.nature === "oneToMany"
+            ? { [association.via]: null }
+            : { $pull: { [association.via]: data._id } }
 
         // Retrieve model.
-        const model = association.plugin ?
-          strapi.plugins[association.plugin].models[association.model || association.collection] :
-          strapi.models[association.model || association.collection];
+        const model = association.plugin
+          ? strapi.plugins[association.plugin].models[
+              association.model || association.collection
+            ]
+          : strapi.models[association.model || association.collection]
 
-        return model.update(search, update, { multi: true });
+        return model.update(search, update, { multi: true })
       })
-    );
+    )
 
-    return data;
+    return data
+  },
+
+  /**
+   * Promise to count scores.
+   *
+   * @return {Promise}
+   */
+
+  count: params => {
+    // Convert `params` object to filters compatible with Mongo.
+    const filters = strapi.utils.models.convertParams("score", params)
+
+    return Score.count().where(filters.where)
   }
-};
+}

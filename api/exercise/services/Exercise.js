@@ -127,5 +127,20 @@ module.exports = {
     );
 
     return data;
+  },
+
+  /**
+    * Promise to count exercises.
+    *
+    * @return {Promise}
+    */
+
+  count: (params) => {
+    // Convert `params` object to filters compatible with Mongo.
+    const filters = strapi.utils.models.convertParams('exercise', params);
+
+    return Exercise
+      .count()
+      .where(filters.where);
   }
 };

@@ -60,5 +60,15 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.milestone.remove(ctx.params);
+  },
+
+  /**
+    * Count milestone records.
+    *
+    * @return {Number}
+    */
+
+  count: async (ctx) => {
+    return strapi.services.milestone.count(ctx.query);
   }
 };

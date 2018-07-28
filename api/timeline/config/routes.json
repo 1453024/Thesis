@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/timeline/count",
+      "handler": "Timeline.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/timeline/:_id",
       "handler": "Timeline.findOne",
       "config": {

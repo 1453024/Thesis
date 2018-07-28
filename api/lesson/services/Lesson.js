@@ -34,6 +34,21 @@ module.exports = {
   },
 
   /**
+    * Promise to count lessons.
+    *
+    * @return {Promise}
+    */
+
+  count: (params) => {
+    // Convert `params` object to filters compatible with Mongo.
+    const filters = strapi.utils.models.convertParams('lesson', params);
+
+    return Lesson
+      .count()
+      .where(filters.where);
+  },
+
+  /**
    * Promise to fetch a/an lesson.
    *
    * @return {Promise}

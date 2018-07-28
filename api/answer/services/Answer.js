@@ -127,5 +127,20 @@ module.exports = {
     );
 
     return data;
+  },
+
+  /**
+    * Promise to count answers.
+    *
+    * @return {Promise}
+    */
+
+  count: (params) => {
+    // Convert `params` object to filters compatible with Mongo.
+    const filters = strapi.utils.models.convertParams('answer', params);
+
+    return Answer
+      .count()
+      .where(filters.where);
   }
 };

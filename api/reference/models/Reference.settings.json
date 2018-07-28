@@ -13,10 +13,10 @@
       "model": "lesson",
       "via": "references"
     },
-    "video": {
+    "keyword": {
       "type": "json"
     },
-    "keyword": {
+    "video": {
       "type": "json"
     }
   }

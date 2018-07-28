@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/answer/count",
+      "handler": "Answer.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/answer/:_id",
       "handler": "Answer.findOne",
       "config": {

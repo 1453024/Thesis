@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/lesson/count",
+      "handler": "Lesson.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/lesson/:_id",
       "handler": "Lesson.findOne",
       "config": {

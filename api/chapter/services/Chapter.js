@@ -127,5 +127,20 @@ module.exports = {
     );
 
     return data;
+  },
+
+  /**
+    * Promise to count chapters.
+    *
+    * @return {Promise}
+    */
+
+  count: (params) => {
+    // Convert `params` object to filters compatible with Mongo.
+    const filters = strapi.utils.models.convertParams('chapter', params);
+
+    return Chapter
+      .count()
+      .where(filters.where);
   }
 };

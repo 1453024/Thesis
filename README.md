@@ -1,3 +1,3 @@
-# myProject
+# Thesis
 
-A quick description of myProject.
+A quick description of Thesis.

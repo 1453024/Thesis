@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/exercise/count",
+      "handler": "Exercise.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/exercise/:_id",
       "handler": "Exercise.findOne",
       "config": {

@@ -60,5 +60,15 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.exercise.remove(ctx.params);
+  },
+
+  /**
+    * Count exercise records.
+    *
+    * @return {Number}
+    */
+
+  count: async (ctx) => {
+    return strapi.services.exercise.count(ctx.query);
   }
 };

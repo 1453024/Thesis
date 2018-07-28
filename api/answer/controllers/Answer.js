@@ -60,5 +60,15 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.answer.remove(ctx.params);
+  },
+
+  /**
+    * Count answer records.
+    *
+    * @return {Number}
+    */
+
+  count: async (ctx) => {
+    return strapi.services.answer.count(ctx.query);
   }
 };

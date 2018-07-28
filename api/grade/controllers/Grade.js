@@ -60,5 +60,15 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.grade.remove(ctx.params);
+  },
+
+  /**
+    * Count grade records.
+    *
+    * @return {Number}
+    */
+
+  count: async (ctx) => {
+    return strapi.services.grade.count(ctx.query);
   }
 };

@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/chapter/count",
+      "handler": "Chapter.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/chapter/:_id",
       "handler": "Chapter.findOne",
       "config": {

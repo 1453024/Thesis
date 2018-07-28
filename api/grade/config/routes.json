@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/grade/count",
+      "handler": "Grade.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/grade/:_id",
       "handler": "Grade.findOne",
       "config": {

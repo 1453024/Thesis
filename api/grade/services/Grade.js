@@ -151,5 +151,20 @@ module.exports = {
     )
 
     return data
+  },
+
+  /**
+    * Promise to count grades.
+    *
+    * @return {Promise}
+    */
+
+  count: (params) => {
+    // Convert `params` object to filters compatible with Mongo.
+    const filters = strapi.utils.models.convertParams('grade', params);
+
+    return Grade
+      .count()
+      .where(filters.where);
   }
 }

@@ -1,4 +1,4 @@
-'use strict';
+"use strict"
 
 /**
  * Part.js controller
@@ -7,15 +7,14 @@
  */
 
 module.exports = {
-
   /**
    * Retrieve part records.
    *
    * @return {Object|Array}
    */
 
-  find: async (ctx) => {
-    return strapi.services.part.fetchAll(ctx.query);
+  find: async ctx => {
+    return strapi.services.part.fetchAll(ctx.query)
   },
 
   /**
@@ -24,12 +23,12 @@ module.exports = {
    * @return {Object}
    */
 
-  findOne: async (ctx) => {
+  findOne: async ctx => {
     if (!ctx.params._id.match(/^[0-9a-fA-F]{24}$/)) {
-      return ctx.notFound();
+      return ctx.notFound()
     }
 
-    return strapi.services.part.fetch(ctx.params);
+    return strapi.services.part.fetch(ctx.params)
   },
 
   /**
@@ -38,8 +37,8 @@ module.exports = {
    * @return {Object}
    */
 
-  create: async (ctx) => {
-    return strapi.services.part.add(ctx.request.body);
+  create: async ctx => {
+    return strapi.services.part.add(ctx.request.body)
   },
 
   /**
@@ -49,7 +48,7 @@ module.exports = {
    */
 
   update: async (ctx, next) => {
-    return strapi.services.part.edit(ctx.params, ctx.request.body) ;
+    return strapi.services.part.edit(ctx.params, ctx.request.body)
   },
 
   /**
@@ -59,6 +58,16 @@ module.exports = {
    */
 
   destroy: async (ctx, next) => {
-    return strapi.services.part.remove(ctx.params);
+    return strapi.services.part.remove(ctx.params)
+  },
+
+  /**
+   * Count part records.
+   *
+   * @return {Number}
+   */
+
+  count: async ctx => {
+    return strapi.services.part.count(ctx.query)
   }
-};
+}

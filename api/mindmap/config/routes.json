@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/mindmap/count",
+      "handler": "Mindmap.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/mindmap/:_id",
       "handler": "Mindmap.findOne",
       "config": {

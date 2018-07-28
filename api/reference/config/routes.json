@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/reference/count",
+      "handler": "Reference.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/reference/:_id",
       "handler": "Reference.findOne",
       "config": {

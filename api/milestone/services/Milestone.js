@@ -149,5 +149,20 @@ module.exports = {
     )
 
     return data
+  },
+
+  /**
+    * Promise to count milestones.
+    *
+    * @return {Promise}
+    */
+
+  count: (params) => {
+    // Convert `params` object to filters compatible with Mongo.
+    const filters = strapi.utils.models.convertParams('milestone', params);
+
+    return Milestone
+      .count()
+      .where(filters.where);
   }
 }

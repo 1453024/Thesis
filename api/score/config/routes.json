@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/score/count",
+      "handler": "Score.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/score/:_id",
       "handler": "Score.findOne",
       "config": {

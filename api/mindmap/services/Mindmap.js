@@ -127,5 +127,20 @@ module.exports = {
     );
 
     return data;
+  },
+
+  /**
+    * Promise to count mindmaps.
+    *
+    * @return {Promise}
+    */
+
+  count: (params) => {
+    // Convert `params` object to filters compatible with Mongo.
+    const filters = strapi.utils.models.convertParams('mindmap', params);
+
+    return Mindmap
+      .count()
+      .where(filters.where);
   }
 };

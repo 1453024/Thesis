@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/subject/count",
+      "handler": "Subject.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/subject/:_id",
       "handler": "Subject.findOne",
       "config": {

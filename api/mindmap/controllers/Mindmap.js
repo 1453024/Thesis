@@ -60,5 +60,15 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.mindmap.remove(ctx.params);
+  },
+
+  /**
+    * Count mindmap records.
+    *
+    * @return {Number}
+    */
+
+  count: async (ctx) => {
+    return strapi.services.mindmap.count(ctx.query);
   }
 };
