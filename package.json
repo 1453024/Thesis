@@ -22,7 +22,8 @@
     "lodash": "4.x.x",
     "pluralize": "^7.0.0",
     "strapi": "3.0.0-alpha.12.7.1",
-    "strapi-hook-mongoose": "3.0.0-alpha.12.7.1"
+    "strapi-hook-mongoose": "3.0.0-alpha.12.7.1",
+    "strapi-upload-cloudinary": "^3.0.0-alpha.13.0.1"
   },
   "author": {
     "name": "Admin",
